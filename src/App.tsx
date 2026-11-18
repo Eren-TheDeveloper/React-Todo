@@ -70,7 +70,7 @@ export default function App() {
   const doneToday = habits.filter(habit => habit.completedDates.includes(today)).length
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-8 sm:py-12">
+    <main className="app-shell mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 pb-8 pt-6 sm:px-8 sm:pb-12 sm:pt-9">
       <Header completed={doneToday} total={habits.length} weekStart={weekStart}
         isCurrentWeek={weekOffset === 0} onPrevious={() => setWeekOffset(value => value - 1)}
         onNext={() => setWeekOffset(value => Math.min(0, value + 1))} onToday={() => setWeekOffset(0)} />
@@ -91,7 +91,7 @@ export default function App() {
       </div>}
       <HabitList habits={habits} weekStart={weekStart} today={today} onDelete={deleteHabit}
         onToggle={(id, date) => updateHabits(toggleCompletion(habits, id, date, today))} />
-      <p className="text-center text-xs leading-5 text-zinc-400">Veriler bu tarayıcıda saklanır. Tamamladığın günleri işaretleyerek ilerlemeni takip et.</p>
+      <footer className="app-footer"><span className="status-dot" aria-hidden="true" /> Veriler bu tarayıcıda saklanır.<span className="hidden sm:inline">Kendi hızında, her gün bir adım.</span></footer>
     </main>
   )
 }
